@@ -41,5 +41,5 @@ end
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-# We're using 'bcrypt' that comes with devise
+# I'm using 'bcrypt' that comes with devise
 # gem 'bcrypt', '~> 3.1.7'        # Use ActiveModel has_secure_password

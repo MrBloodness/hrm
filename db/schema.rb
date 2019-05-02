@@ -42,6 +42,11 @@ ActiveRecord::Schema.define(version: 20190425084035) do
     t.date     "employed_since"
     t.decimal  "salary",                 precision: 6, scale: 2
     t.string   "avatar_file_name"
+    t.integer  "sign_in_count",                                  default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
     t.datetime "created_at",                                                  null: false
     t.datetime "updated_at",                                                  null: false
     t.string   "first_name"
