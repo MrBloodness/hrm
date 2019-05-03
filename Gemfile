@@ -4,6 +4,7 @@ ruby '2.3.1'
 gem 'bootstrap-sass', '3.3.7'
 gem 'coffee-rails', '4.2.1'     # Use CoffeeScript for .coffee assets and views
 gem 'devise', '4.2.0'
+gem 'font-awesome-rails'
 gem 'jbuilder', '2.6.0'         # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jquery-rails', '4.1.1'     # Use jquery as the JavaScript library
 gem 'puma', '3.6.0'             # Use Puma as the app server

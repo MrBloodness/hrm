@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :users
   devise_for :users, path: '', path_names: { sign_in: 'login', sign_out: 'logout', sign_up: 'register', edit: 'settings' }
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -10,5 +11,7 @@ Rails.application.routes.draw do
   get '/about', to: 'application#about', as: 'about'
   get '/contact', to: 'application#contact', as: 'contact'
   # get '/users', to: 'users#index', as: 'users'
-  # get '/user', to: 'users#show', as: 'user'
+  # get '/users/:id', to: 'users#show', as: 'user'
+  # delete '/users/:id', to: 'users#destroy'
+  # get '/users/new', to: 'users#new', as: 'new_user'
 end
