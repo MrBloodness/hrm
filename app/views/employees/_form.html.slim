@@ -1,0 +1,51 @@
+= content_for :title do
+  = 'Registration'
+
+.row
+  .col-lg-offset-3.col-lg-6.col-md-offset-3.col-md-6.col-sm-offset-2.col-sm-8.col-xs-12
+    .panel.panel-default
+      .panel-body
+        = form_for(@employee) do |f|
+
+          - unless @employee.errors.empty?
+            .alert.alert-warning
+              = render 'devise/shared/error_messages', object: f.object
+              
+          .form-group
+            = f.label(:first_name)
+            = f.text_field(:first_name, autofocus: true, placeholder: 'First name', class: 'form-control')
+
+          .form-group
+            = f.label(:last_name)
+            = f.text_field(:last_name, placeholder: 'Last name', class: 'form-control')
+
+          .form-group
+            = f.label(:email)
+            = f.email_field(:email, placeholder: 'Hello@youremail.com', class: 'form-control')
+
+          = f.submit('Register', class: 'btn btn-primary btn-block')
+
+/ actual_address          :text
+/ available               :boolean          default(TRUE)
+/ bank_account            :string
+/ bank_name               :string
+/ created_at              :datetime         not null
+/ email                   :string
+/ employed_since          :date
+/ external_phone          :string
+/ first_name              :string
+/ id                      :integer          not null, primary key
+/ internal_phone          :string
+/ last_name               :string
+/ legal_address           :text
+/ mobile_phone            :string
+/ nonstandart_worktime    :string
+/ private_phone           :string
+/ remaining_vacation_days :integer
+/ salary                  :decimal(6, 2)
+/ state_id                :integer
+/ unused_vacation_days    :integer
+/ updated_at              :datetime         not null
+/ vacation_start_date     :date
+/ worktime                :integer
+/ 

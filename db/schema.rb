@@ -10,13 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190425084035) do
+ActiveRecord::Schema.define(version: 20190507082626) do
 
   create_table "classifier_permissions", force: :cascade do |t|
     t.integer "user_id"
     t.integer "user_classifier_id"
     t.index ["user_classifier_id"], name: "index_classifier_permissions_on_user_classifier_id"
     t.index ["user_id"], name: "index_classifier_permissions_on_user_id"
+  end
+
+  create_table "employees", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.integer  "state_id"
+    t.string   "internal_phone"
+    t.string   "mobile_phone"
+    t.string   "external_phone"
+    t.string   "private_phone"
+    t.text     "actual_address"
+    t.text     "legal_address"
+    t.date     "employed_since"
+    t.decimal  "salary",                  precision: 6, scale: 2
+    t.string   "bank_name"
+    t.string   "bank_account"
+    t.integer  "worktime"
+    t.boolean  "available",                                       default: true
+    t.string   "nonstandart_worktime"
+    t.integer  "unused_vacation_days"
+    t.date     "vacation_start_date"
+    t.integer  "remaining_vacation_days"
+    t.datetime "created_at",                                                     null: false
+    t.datetime "updated_at",                                                     null: false
   end
 
   create_table "user_classifiers", force: :cascade do |t|

@@ -1,16 +1,18 @@
 = content_for :title do
-  = 'Registration'
+  = 'Editing'
+
+h1 Editing employee
 
 .row
   .col-lg-offset-3.col-lg-6.col-md-offset-3.col-md-6.col-sm-offset-2.col-sm-8.col-xs-12
     .panel.panel-default
       .panel-body
-        = form_for(@user) do |f|
+        = form_for(@employee) do |f|
 
-          - unless @user.errors.empty?
+          - unless @employee.errors.empty?
             .alert.alert-warning
               = render 'devise/shared/error_messages', object: f.object
-
+              
           .form-group
             = f.label(:first_name)
             = f.text_field(:first_name, autofocus: true, placeholder: 'First name', class: 'form-control')
@@ -24,12 +26,16 @@
             = f.email_field(:email, placeholder: 'Hello@youremail.com', class: 'form-control')
 
           .form-group
-            = f.label(:password)
-            - if @minimum_password_length
-              em= " (#{@minimum_password_length} characters minimum)"
-            = f.password_field(:password, autocomplete: 'off', placeholder: 'Password', class: 'form-control')
+            = f.label(:bank_name)
+            = f.text_field(:bank_name, class: 'form-control')
 
           .form-group
-            = f.label(:password_confirmation)
-            = f.password_field(:password_confirmation, autocomplete: 'off', placeholder: 'Password confirmation', class: 'form-control')
-          = f.submit('Register', class: 'btn btn-primary btn-block')
+            = f.label(:bank_account)
+            = f.text_field(:bank_account, class: 'form-control')
+
+          = f.submit('Edit', class: 'btn btn-primary btn-block')
+
+=> link_to 'Show', @employee
+'|
+=< link_to 'Back', employees_path
+
