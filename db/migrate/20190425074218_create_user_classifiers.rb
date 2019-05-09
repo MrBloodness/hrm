@@ -6,7 +6,6 @@ class CreateUserClassifiers < ActiveRecord::Migration[5.0]
       t.boolean :is_active, default: true
       t.datetime :created_at
       t.datetime :updated_at
-      t.string :color
       t.integer :position, limit: 4, null: false
       t.string :key
       t.timestamps

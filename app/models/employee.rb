@@ -1,5 +1,6 @@
 class Employee < ApplicationRecord
 
+  has_many :work_logs
   validates :first_name, :last_name, :email, presence: true
 
 end

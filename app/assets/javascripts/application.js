@@ -16,7 +16,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap/custom
-//= require turbolinks
+//= require bootstrap-datepicker
+// require turbolinks
 //= require_tree .
 
 document.addEventListener("turbolinks:load", function() {
@@ -24,4 +25,8 @@ document.addEventListener("turbolinks:load", function() {
         $('li.active').removeClass('active');
     }
     $('a[href="' + location.pathname + '"]').parent('li').addClass('active');
+});
+
+$(document).ready(function() {
+	$('.datepicker').datepicker({format: 'dd/mm/yyyy'});
 });

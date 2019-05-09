@@ -1,0 +1,32 @@
+= content_for :title do
+  = 'Create work log'
+
+.row
+  .col-lg-offset-3.col-lg-6.col-md-offset-3.col-md-6.col-sm-offset-2.col-sm-8.col-xs-12
+    .panel.panel-default
+      .panel-body
+        = form_for(@work_log) do |f|
+
+          - unless @work_log.errors.empty?
+            .alert.alert-warning
+              = render 'devise/shared/error_messages', object: f.object
+
+          .form-group
+            = f.label(:employee)
+            br
+            = f.select(:employee_id, Employee.all, :prompt => 'Select One', class: 'form-control')
+            / = f.select(:employee_id, Employee.all.map { |x, y| x.id => y.name }, :prompt => 'Select One', class: 'form-control')
+
+
+
+          .form-group
+            = f.label(:spent_time)
+            = f.text_field(:spent_time, autofocus: true, placeholder: 'Spent time', class: 'form-control')
+
+          .form-group
+            = f.label(:comment)
+            = f.text_field(:comment, placeholder: 'Comment', class: 'form-control')
+
+          .form-group
+            = f.label(:log_date)
+            = f.text_field(:log_date, placeholder: 'Log date', class: 'form-control datepicker')

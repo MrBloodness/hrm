@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190507082626) do
+ActiveRecord::Schema.define(version: 20190509075616) do
 
   create_table "classifier_permissions", force: :cascade do |t|
     t.integer "user_id"
@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 20190507082626) do
     t.boolean  "is_active",            default: true
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
-    t.string   "color"
     t.integer  "position",   limit: 4,                 null: false
     t.string   "key"
   end
@@ -78,6 +77,17 @@ ActiveRecord::Schema.define(version: 20190507082626) do
     t.string   "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "work_logs", force: :cascade do |t|
+    t.integer  "employee_id"
+    t.decimal  "spent_time",  precision: 10, scale: 2
+    t.string   "type"
+    t.date     "log_date"
+    t.text     "comment"
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
+    t.index ["employee_id"], name: "index_work_logs_on_employee_id"
   end
 
 end
