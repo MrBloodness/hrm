@@ -18,7 +18,6 @@
             / = f.select(:employee_id, Employee.all.map { |x, y| x.id => y.name }, :prompt => 'Select One', class: 'form-control')
 
 
-
           .form-group
             = f.label(:spent_time)
             = f.text_field(:spent_time, autofocus: true, placeholder: 'Spent time', class: 'form-control')
@@ -30,3 +29,4 @@
           .form-group
             = f.label(:log_date)
             = f.text_field(:log_date, placeholder: 'Log date', class: 'form-control datepicker')
+          = f.submit('Create', class: 'btn btn-primary btn-block')

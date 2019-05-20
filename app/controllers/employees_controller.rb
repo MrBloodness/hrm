@@ -21,7 +21,7 @@ class EmployeesController < ApplicationController
         format.json { render :show, status: :created, location: @employee }
       else
         @employee.valid?
-        format.html { render 'employees/_form.html.slim' }
+        format.html { render 'employees/new.html.slim' }
         format.json { render json: @employee.errors, status: :unprocessable_entity }
       end
     end

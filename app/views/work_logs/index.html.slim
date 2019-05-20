@@ -1,2 +1,28 @@
-h1 WorkLogs#index
-p Find me in app/views/work_logs/index.html.slim
+h1 Listing worklogs
+
+table
+  thead
+    - @work_logs.present?
+      tr
+        th Employee
+        th Worklog date
+        th Worklog type
+        th
+        th
+        th
+
+  tbody
+    - @work_logs.each do |work_log|
+      tr
+        td = work_log.employee_id
+        td = work_log.log_date
+        td = work_log.type
+        td = work_log.spent_time
+        td = work_log.updated_at
+        td = link_to 'Show', work_log
+        td = link_to 'Edit', edit_work_log_path(work_log)
+        td = link_to 'Destroy', work_log, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Worklog', new_work_log_path
