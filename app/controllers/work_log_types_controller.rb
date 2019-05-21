@@ -7,11 +7,6 @@ class WorkLogTypesController < ApplicationController
     @work_log_types = WorkLogType.all
   end
 
-  # GET /work_log_types/1
-  # GET /work_log_types/1.json
-  def show
-  end
-
   # GET /work_log_types/new
   def new
     @work_log_type = WorkLogType.new
