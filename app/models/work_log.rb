@@ -4,9 +4,6 @@ class WorkLog < ApplicationRecord
 
   private
 
-  def set_user
-    self.user = user || User.current
-  end
 end
 
 # == Schema Information
