@@ -2,19 +2,19 @@ h1 Listing worklogs
 
 table
   thead
-    - @work_logs.present?
+    - @work_logs.any?
       tr
         th Employee
         th Worklog date
         th Worklog type
-        th
-        th
-        th
+        th Spent time
+        th Updated at
+        th colspan='3'
 
   tbody
     - @work_logs.each do |work_log|
       tr
-        td = work_log.employee_id
+        td = Employee.find(work_log.employee_id)
         td = work_log.log_date
         td = work_log.type
         td = work_log.spent_time

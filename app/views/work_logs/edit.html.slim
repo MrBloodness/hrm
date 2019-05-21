@@ -1,2 +1,10 @@
-h1 WorkLogs#edit
-p Find me in app/views/work_logs/edit.html.slim
+- provide(:button_text, 'Update worklog')
+.text-center
+	h1 Editing worklog
+
+== render 'form'
+
+=> link_to 'Show', @work_log
+'|
+=< link_to 'Back', work_logs_path
+

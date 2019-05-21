@@ -32,4 +32,4 @@
           .form-group
             = f.label(:password_confirmation)
             = f.password_field(:password_confirmation, autocomplete: 'off', placeholder: 'Password confirmation', class: 'form-control')
-          = f.submit('Register', class: 'btn btn-primary btn-block')
+          = f.submit yield(:button_text), class: 'btn btn-primary btn-block'

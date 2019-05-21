@@ -3,6 +3,10 @@ class Employee < ApplicationRecord
   has_many :work_logs
   validates :first_name, :last_name, :email, presence: true
 
+  def to_s
+  	"#{first_name} #{last_name}"
+  end
+
 end
 
 # == Schema Information

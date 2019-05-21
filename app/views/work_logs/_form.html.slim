@@ -1,5 +1,5 @@
 = content_for :title do
-  = 'Create work log'
+  = 'Create worklog'
 
 .row
   .col-lg-offset-3.col-lg-6.col-md-offset-3.col-md-6.col-sm-offset-2.col-sm-8.col-xs-12
@@ -14,9 +14,7 @@
           .form-group
             = f.label(:employee)
             br
-            = f.select(:employee_id, Employee.all, :prompt => 'Select One', class: 'form-control')
-            / = f.select(:employee_id, Employee.all.map { |x, y| x.id => y.name }, :prompt => 'Select One', class: 'form-control')
-
+            = f.select(:employee_id, Employee.all.map { |e| [e.to_s, e.id] } , :prompt => 'Select One', class: 'form-control')
 
           .form-group
             = f.label(:spent_time)
@@ -29,4 +27,4 @@
           .form-group
             = f.label(:log_date)
             = f.text_field(:log_date, placeholder: 'Log date', class: 'form-control datepicker')
-          = f.submit('Create', class: 'btn btn-primary btn-block')
+          = f.submit yield(:button_text), class: 'btn btn-primary btn-block'

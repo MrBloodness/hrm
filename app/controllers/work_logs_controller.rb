@@ -27,6 +27,23 @@ class WorkLogsController < ApplicationController
     @work_logs = WorkLog.all
   end
 
+  def edit
+    @work_log = WorkLog.find(params[:id])
+  end
+
+  def update
+    @work_log = WorkLog.find(params[:id])
+    respond_to do |format|
+      if @work_log.update(work_log_params)
+        format.html { redirect_to @work_log, notice: 'Worklog was successfully updated.' }
+        format.json { render :show, status: :ok, location: @work_log }
+      else
+        format.html { render :edit }
+        format.json { render json: @work_log.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def destroy
     @work_log = WorkLog.find(params[:id])
     @work_log.destroy
@@ -39,6 +56,6 @@ class WorkLogsController < ApplicationController
   private
 
     def work_log_params
-      params.require(:work_log).permit(:employee_id, :spent_time, :created_at)
+      params.require(:work_log).permit(:employee_id, :spent_time, :log_date, :comment, :created_at)
     end
 end
