@@ -1,9 +1,19 @@
-= form_for @work_log_type do |f|
-  - if @work_log_type.errors.any?
-    #error_explanation
-      h2 = "#{pluralize(@work_log_type.errors.count, "error")} prohibited this work_log_type from being saved:"
-      ul
-        - @work_log_type.errors.full_messages.each do |message|
-          li = message
+= content_for :title do
+  = 'Create worklog type'
 
-  .actions = f.submit
+.row
+  .col-lg-offset-3.col-lg-6.col-md-offset-3.col-md-6.col-sm-offset-2.col-sm-8.col-xs-12
+    .panel.panel-default
+      .panel-body
+        = form_for(@work_log_type) do |f|
+
+          - unless @work_log_type.errors.empty?
+            .alert.alert-warning
+              = render 'devise/shared/error_messages', object: f.object
+
+          .form-group
+            = f.hidden_field(:type, value: 'WorkLogType')
+            = f.label(:value)
+            = f.text_field(:value, class: 'form-control')
+
+          = f.submit yield(:button_text), class: 'btn btn-primary btn-block'

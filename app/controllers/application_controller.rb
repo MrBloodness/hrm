@@ -1,9 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :authenticate_user!, except: [:home, :about, :contact]
+  before_action :authenticate_user!, only: [:update, :destroy]
   before_action :initialize_resource, only: [:new, :create]
-
+  before_action :set_resource, only: [:show, :edit]
+  before_action :set_resources, only: [:index]
   helper_method :resource_klass, :resource, :resources
 
   # def home
@@ -28,6 +29,7 @@ class ApplicationController < ActionController::Base
   private
 
   def resource_klass
+    return if controller_path.to_s['devise']
     controller_path.classify.constantize
   end
 
@@ -48,10 +50,12 @@ class ApplicationController < ActionController::Base
   end
 
   def initialize_resource
+    return if controller_path.to_s['devise']
     self.resource = resource_klass.new
   end
 
   def set_resource
+    return if controller_path.to_s['devise']
     self.resource = resource_klass.find(params[:id])
   end
 

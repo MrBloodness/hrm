@@ -56,6 +56,6 @@ class WorkLogsController < ApplicationController
   private
 
     def work_log_params
-      params.require(:work_log).permit(:employee_id, :spent_time, :log_date, :comment, :created_at)
+      params.require(:work_log).permit(:employee_id, :spent_time, :work_log_type_id, :log_date, :comment, :created_at)
     end
 end

@@ -14,11 +14,16 @@
           .form-group
             = f.label(:employee)
             br
-            = f.select(:employee_id, Employee.all.map { |e| [e.to_s, e.id] } , :prompt => 'Select One', class: 'form-control')
+            = f.select(:employee_id, Employee.all.map { |e| [e.to_s, e.id] } , { :prompt => 'Select One' }, { class: 'form-control' } )
+
+          .form-group
+            = f.label('Worklog type')
+            br
+            = f.select(:work_log_type_id, WorkLogType.all.map { |e| [e.to_s, e.id] } , {} , { class: 'form-control' } )
 
           .form-group
             = f.label(:spent_time)
-            = f.text_field(:spent_time, autofocus: true, placeholder: 'Spent time', class: 'form-control')
+            = f.text_field(:spent_time, placeholder: 'Spent time', class: 'form-control')
 
           .form-group
             = f.label(:comment)

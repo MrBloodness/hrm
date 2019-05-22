@@ -16,7 +16,7 @@ table
       tr
         td = Employee.find(work_log.employee_id)
         td = work_log.log_date
-        td = work_log.type
+        td = work_log.work_log_type
         td = work_log.spent_time
         td = work_log.updated_at
         td = link_to 'Show', work_log

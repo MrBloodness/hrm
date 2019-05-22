@@ -1,0 +1,2 @@
+class UserClassifiersController < ApplicationController
+end

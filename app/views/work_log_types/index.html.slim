@@ -1,19 +1,21 @@
-h1 Listing work_log_types
+h1 Listing worklog types
 
 table
   thead
     tr
-      th
+      th Worklog type
+      th Created at
       th
       th
 
   tbody
     - @work_log_types.each do |work_log_type|
       tr
-        td = link_to 'Show', work_log_type
+        td = work_log_type.value
+        td = work_log_type.created_at
         td = link_to 'Edit', edit_work_log_type_path(work_log_type)
         td = link_to 'Destroy', work_log_type, data: { confirm: 'Are you sure?' }, method: :delete
 
 br
 
-= link_to 'New Work log type', new_work_log_type_path
+= link_to 'New worklog type', new_work_log_type_path

@@ -1,11 +1,9 @@
-class WorkLogType < UserClassifier
+require 'test_helper'
 
-    has_many :work_log
-
-   def to_s
-    "#{value}"
-  end
-
+class UserClassifierTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end
 
 # == Schema Information

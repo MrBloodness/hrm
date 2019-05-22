@@ -1,11 +1,4 @@
-class WorkLogType < UserClassifier
-
-    has_many :work_log
-
-   def to_s
-    "#{value}"
-  end
-
+class UserClassifier < ApplicationRecord
 end
 
 # == Schema Information

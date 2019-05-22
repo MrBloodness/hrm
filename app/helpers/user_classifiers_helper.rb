@@ -1,0 +1,2 @@
+module UserClassifiersHelper
+end

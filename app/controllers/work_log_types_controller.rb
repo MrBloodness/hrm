@@ -23,7 +23,7 @@ class WorkLogTypesController < ApplicationController
 
     respond_to do |format|
       if @work_log_type.save
-        format.html { redirect_to @work_log_type, notice: 'Work log type was successfully created.' }
+        format.html { redirect_to work_log_types_path, notice: 'Worklog type was successfully created.' }
         format.json { render :show, status: :created, location: @work_log_type }
       else
         format.html { render :new }
@@ -37,8 +37,8 @@ class WorkLogTypesController < ApplicationController
   def update
     respond_to do |format|
       if @work_log_type.update(work_log_type_params)
-        format.html { redirect_to @work_log_type, notice: 'Work log type was successfully updated.' }
-        format.json { render :show, status: :ok, location: @work_log_type }
+        format.html { redirect_to work_log_types_path, notice: 'Worklog type was successfully updated.' }
+        format.json { render :show, status: :created, location: @work_log_type }
       else
         format.html { render :edit }
         format.json { render json: @work_log_type.errors, status: :unprocessable_entity }
@@ -51,7 +51,7 @@ class WorkLogTypesController < ApplicationController
   def destroy
     @work_log_type.destroy
     respond_to do |format|
-      format.html { redirect_to work_log_types_url, notice: 'Work log type was successfully destroyed.' }
+      format.html { redirect_to work_log_types_url, notice: 'Worklog type was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -65,5 +65,6 @@ class WorkLogTypesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def work_log_type_params
       params.fetch(:work_log_type, {})
+      params.require(:work_log_type).permit(:value)
     end
 end

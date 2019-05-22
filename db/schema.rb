@@ -10,16 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190509075616) do
+ActiveRecord::Schema.define(version: 20190522141327) do
 
-  create_table "classifier_permissions", force: :cascade do |t|
+  create_table "classifier_permissions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "user_id"
     t.integer "user_classifier_id"
-    t.index ["user_classifier_id"], name: "index_classifier_permissions_on_user_classifier_id"
-    t.index ["user_id"], name: "index_classifier_permissions_on_user_id"
+    t.index ["user_classifier_id"], name: "index_classifier_permissions_on_user_classifier_id", using: :btree
+    t.index ["user_id"], name: "index_classifier_permissions_on_user_id", using: :btree
   end
 
-  create_table "employees", force: :cascade do |t|
+  create_table "documents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "number"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.bigint   "file_file_size"
+    t.datetime "file_updated_at"
+    t.string   "title"
+    t.date     "document_date"
+    t.date     "deadline_date"
+    t.text     "description",          limit: 65535
+    t.integer  "user_id"
+    t.integer  "employee_id"
+    t.integer  "document_category_id"
+    t.integer  "document_state_id"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.index ["document_category_id"], name: "index_documents_on_document_category_id", using: :btree
+    t.index ["document_state_id"], name: "index_documents_on_document_state_id", using: :btree
+    t.index ["employee_id"], name: "index_documents_on_employee_id", using: :btree
+    t.index ["user_id"], name: "index_documents_on_user_id", using: :btree
+  end
+
+  create_table "employees", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
@@ -28,33 +50,31 @@ ActiveRecord::Schema.define(version: 20190509075616) do
     t.string   "mobile_phone"
     t.string   "external_phone"
     t.string   "private_phone"
-    t.text     "actual_address"
-    t.text     "legal_address"
+    t.text     "actual_address",          limit: 65535
+    t.text     "legal_address",           limit: 65535
     t.date     "employed_since"
-    t.decimal  "salary",                  precision: 6, scale: 2
+    t.decimal  "salary",                                precision: 6, scale: 2
     t.string   "bank_name"
     t.string   "bank_account"
     t.integer  "worktime"
-    t.boolean  "available",                                       default: true
+    t.boolean  "available",                                                     default: true
     t.string   "nonstandart_worktime"
     t.integer  "unused_vacation_days"
     t.date     "vacation_start_date"
     t.integer  "remaining_vacation_days"
-    t.datetime "created_at",                                                     null: false
-    t.datetime "updated_at",                                                     null: false
+    t.datetime "created_at",                                                                   null: false
+    t.datetime "updated_at",                                                                   null: false
   end
 
-  create_table "user_classifiers", force: :cascade do |t|
+  create_table "user_classifiers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "type"
-    t.boolean  "is_system",            default: false
-    t.boolean  "is_active",            default: true
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-    t.integer  "position",   limit: 4,                 null: false
-    t.string   "key"
+    t.string   "value"
+    t.boolean  "is_active",  default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "email",                                          default: "", null: false
     t.string   "encrypted_password",                             default: "", null: false
     t.string   "reset_password_token"
@@ -75,19 +95,20 @@ ActiveRecord::Schema.define(version: 20190509075616) do
     t.datetime "updated_at",                                                  null: false
     t.string   "first_name"
     t.string   "last_name"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
-  create_table "work_logs", force: :cascade do |t|
+  create_table "work_logs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "employee_id"
-    t.decimal  "spent_time",  precision: 10, scale: 2
-    t.string   "type"
+    t.decimal  "spent_time",                     precision: 10, scale: 2
+    t.integer  "work_log_type_id"
     t.date     "log_date"
-    t.text     "comment"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-    t.index ["employee_id"], name: "index_work_logs_on_employee_id"
+    t.text     "comment",          limit: 65535
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
+    t.index ["employee_id"], name: "index_work_logs_on_employee_id", using: :btree
+    t.index ["work_log_type_id"], name: "index_work_logs_on_work_log_type_id", using: :btree
   end
 
 end

@@ -4,7 +4,7 @@ class Employee < ApplicationRecord
   validates :first_name, :last_name, :email, presence: true
 
   def to_s
-  	"#{first_name} #{last_name}"
+    "#{first_name} #{last_name}"
   end
 
 end
