@@ -2,11 +2,12 @@ h1 Listing worklog types
 
 table
   thead
-    tr
-      th Worklog type
-      th Created at
-      th
-      th
+    - @work_log_types.any?
+      tr
+        th Worklog type
+        th Created at
+        th
+        th
 
   tbody
     - @work_log_types.each do |work_log_type|

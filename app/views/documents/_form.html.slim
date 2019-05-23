@@ -1,0 +1,49 @@
+= content_for :title do
+  = yield(:title_text)
+
+.row
+  .col-lg-offset-3.col-lg-6.col-md-offset-3.col-md-6.col-sm-offset-2.col-sm-8.col-xs-12
+    .panel.panel-default
+      .panel-body
+        = form_for(@document) do |f|
+
+          - unless @document.errors.empty?
+            .alert.alert-warning
+              = render 'devise/shared/error_messages', object: f.object
+
+          .form-group
+            = f.label(:number)
+            = f.text_field(:number, placeholder: 'Document number', class: 'form-control')
+
+          .form-group
+            = f.label(:title)
+            = f.text_field(:title, placeholder: 'Document title', class: 'form-control')
+
+          .form-group
+            = f.label(:employee)
+            br
+            = f.select(:employee_id, Employee.all.map { |e| [e.to_s, e.id] } , {}, { class: 'form-control' } )
+
+          .form-group
+            = f.label(:document_category)
+            br
+            = f.select(:document_category_id, DocumentCategory.all.map { |e| [e.to_s, e.id] } , {} , { class: 'form-control' } )
+
+          .form-group
+            = f.label(:document_state)
+            br
+            = f.select(:document_state_id, DocumentState.all.map { |e| [e.to_s, e.id] } , {} , { class: 'form-control' } )
+
+          .form-group
+            = f.label(:document_date)
+            = f.text_field(:document_date, placeholder: 'Document date', class: 'form-control datepicker')
+
+          .form-group
+            = f.label(:deadline_date)
+            = f.text_field(:deadline_date, placeholder: 'Document deadline date', class: 'form-control datepicker')
+
+          .form-group
+            = f.label(:file)
+            = f.file_field(:file)
+
+          = f.submit yield(:button_text), class: 'btn btn-primary btn-block'

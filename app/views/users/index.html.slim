@@ -6,9 +6,7 @@ table
       th Name
       th Surname
       th Email
-      th
-      th
-      th
+      th colspan='2'
 
   tbody
     - resources.each do |user|
@@ -16,7 +14,6 @@ table
         td = user.first_name
         td = user.last_name
         td = user.email
-        td = link_to 'Show', user
         td = link_to 'Edit', edit_user_path(user)
         td = link_to 'Destroy', user, data: { confirm: 'Are you sure?' }, method: :delete
 

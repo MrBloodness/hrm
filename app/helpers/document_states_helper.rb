@@ -1,0 +1,2 @@
+module DocumentStatesHelper
+end

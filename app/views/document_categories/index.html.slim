@@ -1,0 +1,22 @@
+h1 Listing document categories
+
+table
+  thead
+    - @document_categories.any?
+      tr
+        th Document category
+        th Created at
+        th
+        th
+
+  tbody
+    - @document_categories.each do |document_category|
+      tr
+        td = document_category.value
+        td = document_category.created_at
+        td = link_to 'Edit', edit_document_category_path(document_category)
+        td = link_to 'Destroy', document_category, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Document category', new_document_category_path

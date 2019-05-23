@@ -1,0 +1,22 @@
+h1 Listing document states
+
+table
+  thead
+    - @document_states.any?
+      tr
+        th Document state
+        th Created at
+        th
+        th
+
+  tbody
+    - @document_states.each do |document_state|
+      tr
+        td = document_state.value
+        td = document_state.created_at
+        td = link_to 'Edit', edit_document_state_path(document_state)
+        td = link_to 'Destroy', document_state, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Document state', new_document_state_path

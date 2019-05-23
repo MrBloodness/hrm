@@ -1,1 +1,0 @@
-json.array! @work_log_types, partial: 'work_log_types/work_log_type', as: :work_log_type

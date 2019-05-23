@@ -1,2 +1,19 @@
-h1 WorkLogs#show
-p Find me in app/views/work_logs/show.html.slim
+p
+  strong Employee: 
+  = Employee.find(@work_log.employee_id)
+p
+  strong Worklog date: 
+  = @work_log.log_date
+p
+  strong Worklog type: 
+  = @work_log.work_log_type
+p
+  strong Spent time: 
+  = @work_log.spent_time
+p 
+  strong Comment: 
+  = @work_log.comment
+
+=> link_to 'Edit', edit_work_log_path(@work_log)
+'|
+=< link_to 'Back', work_logs_path

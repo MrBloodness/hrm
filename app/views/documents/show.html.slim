@@ -1,0 +1,29 @@
+p
+  strong Document number: 
+  = resource.number
+p
+  strong Document title: 
+  = resource.title
+p
+  strong Employee: 
+  = Employee.find(resource.employee_id)
+p
+  strong Document category: 
+  = DocumentCategory.find(resource.document_category_id)
+p
+  strong Document state: 
+  = DocumentState.find(resource.document_state_id)
+p
+  strong Document date: 
+  = resource.document_date
+p
+  strong Deadline deadline date: 
+  = resource.deadline_date
+- if resource.file.present?
+  p
+    strong Download file attachment: 
+    = link_to 'Download', resource.file.url(:original), download: resource.file.url(:original)
+
+=> link_to 'Edit', edit_document_path(resource)
+'|
+=< link_to 'Back', documents_path

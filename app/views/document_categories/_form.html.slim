@@ -1,0 +1,19 @@
+= content_for :title do
+  = yield(:title_text)
+
+.row
+  .col-lg-offset-3.col-lg-6.col-md-offset-3.col-md-6.col-sm-offset-2.col-sm-8.col-xs-12
+    .panel.panel-default
+      .panel-body
+        = form_for(@document_category) do |f|
+
+          - unless @document_category.errors.empty?
+            .alert.alert-warning
+              = render 'devise/shared/error_messages', object: f.object
+
+          .form-group
+            = f.hidden_field(:type, value: 'DocumentCategory')
+            = f.label(:value)
+            = f.text_field(:value, class: 'form-control')
+
+          = f.submit yield(:button_text), class: 'btn btn-primary btn-block'

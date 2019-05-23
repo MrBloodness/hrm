@@ -1,8 +1,8 @@
 class WorkLogType < UserClassifier
 
-    has_many :work_log
+  has_many :work_log
 
-   def to_s
+  def to_s
     "#{value}"
   end
 
@@ -15,7 +15,7 @@ end
 #  created_at :datetime         not null
 #  id         :integer          not null, primary key
 #  is_active  :boolean          default(TRUE)
-#  type       :string
+#  type       :string(255)
 #  updated_at :datetime         not null
-#  value      :string
+#  value      :string(255)
 #
