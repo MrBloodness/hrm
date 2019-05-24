@@ -45,25 +45,20 @@ ActiveRecord::Schema.define(version: 20190522141327) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.integer  "state_id"
+    t.integer  "employee_state_id"
     t.string   "internal_phone"
     t.string   "mobile_phone"
     t.string   "external_phone"
     t.string   "private_phone"
-    t.text     "actual_address",          limit: 65535
-    t.text     "legal_address",           limit: 65535
+    t.text     "actual_address",    limit: 65535
+    t.text     "legal_address",     limit: 65535
     t.date     "employed_since"
-    t.decimal  "salary",                                precision: 6, scale: 2
+    t.decimal  "salary",                          precision: 6, scale: 2
     t.string   "bank_name"
     t.string   "bank_account"
-    t.integer  "worktime"
-    t.boolean  "available",                                                     default: true
-    t.string   "nonstandart_worktime"
-    t.integer  "unused_vacation_days"
-    t.date     "vacation_start_date"
-    t.integer  "remaining_vacation_days"
-    t.datetime "created_at",                                                                   null: false
-    t.datetime "updated_at",                                                                   null: false
+    t.datetime "created_at",                                              null: false
+    t.datetime "updated_at",                                              null: false
+    t.index ["employee_state_id"], name: "index_employees_on_employee_state_id", using: :btree
   end
 
   create_table "user_classifiers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

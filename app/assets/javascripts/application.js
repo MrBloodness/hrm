@@ -35,5 +35,5 @@ $(document).ready(function() {
   var startDate = new Date(d.getFullYear(), d.getMonth(), d.getDate());
 
   $(".datepicker").datepicker();
-  $(".datepicker").datepicker("setDate", startDate);
+  // $(".datepicker").datepicker("setDate", startDate);
 });

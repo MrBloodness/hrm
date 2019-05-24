@@ -21,26 +21,25 @@
 
           .form-group
             = f.label(:employee)
-            br
             = f.select(:employee_id, Employee.all.map { |e| [e.to_s, e.id] } , {}, { class: 'form-control' } )
 
           .form-group
             = f.label(:document_category)
-            br
             = f.select(:document_category_id, DocumentCategory.all.map { |e| [e.to_s, e.id] } , {} , { class: 'form-control' } )
 
           .form-group
             = f.label(:document_state)
-            br
             = f.select(:document_state_id, DocumentState.all.map { |e| [e.to_s, e.id] } , {} , { class: 'form-control' } )
 
           .form-group
             = f.label(:document_date)
-            = f.text_field(:document_date, placeholder: 'Document date', class: 'form-control datepicker')
+            = f.text_field(:document_date, placeholder: 'Document date', class: 'form-control datepicker', data: { 'date-format' => 'dd/mm/yyyy' },
+              value: ( @document.document_date.strftime("%d/%m/%Y") if @document.document_date.present? ))
 
           .form-group
             = f.label(:deadline_date)
-            = f.text_field(:deadline_date, placeholder: 'Document deadline date', class: 'form-control datepicker')
+            = f.text_field(:deadline_date, placeholder: 'Document deadline date', autocomplete: 'off', class: 'form-control datepicker', data: { 'date-format' => 'dd/mm/yyyy' },
+              value: ( @document.deadline_date.strftime("%d/%m/%Y") if @document.deadline_date.present? ))
 
           .form-group
             = f.label(:file)

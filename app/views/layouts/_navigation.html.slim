@@ -11,8 +11,9 @@ ul class="nav navbar-nav"
         span.caret
       ul class="dropdown-menu"
         li=link_to('Worklog types', work_log_types_path)
+        li=link_to('Employee States', employee_states_path)
         li=link_to('Document Categories', document_categories_path)
-        li=link_to('Docuemnt States', document_states_path)
+        li=link_to('Document States', document_states_path)
   - else
     li= link_to('<span class="glyphicon glyphicon-phone-alt"></span> Contact'.html_safe, contact_path)
     li= link_to('<span class="glyphicon glyphicon-user"></span> About'.html_safe, about_path)

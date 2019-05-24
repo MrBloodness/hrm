@@ -1,5 +1,5 @@
 class DocumentsController < ApplicationController
-
+  before_action :set_date_default, only: [:new, :edit]
 
   def create
     @document = Document.new(document_params)
@@ -35,9 +35,13 @@ class DocumentsController < ApplicationController
 
   private
 
-    def document_params
-      params.require(:document).permit(:number, :title, :employee_id, :document_state_id, :document_category_id,
-        :document_date, :deadline_date, :file, :file_content_type, :file_file_name, :file_file_size, :file_updated_at)
-    end
+  def set_date_default
+    resource.document_date ||= Time.zone.now
+  end
+
+  def document_params
+    params.require(:document).permit(:number, :title, :employee_id, :document_state_id, :document_category_id,
+      :document_date, :deadline_date, :file, :file_content_type, :file_file_name, :file_file_size, :file_updated_at)
+  end
 
 end

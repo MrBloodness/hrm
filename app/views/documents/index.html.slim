@@ -21,8 +21,8 @@ table.table
         td = Employee.find(document.employee_id)
         td = DocumentCategory.find(document.document_category_id)
         td = DocumentState.find(document.document_state_id)
-        td = document.document_date
-        td = document.deadline_date
+        td = I18n.l(document.document_date, format: :date_day_month_year)
+        td = I18n.l(document.deadline_date, format: :date_day_month_year)
         td = link_to 'Show', document
         td = link_to 'Edit', edit_document_path(document)
         td = link_to 'Destroy', document, data: { confirm: 'Are you sure?' }, method: :delete

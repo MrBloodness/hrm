@@ -15,10 +15,11 @@ p
   = DocumentState.find(resource.document_state_id)
 p
   strong Document date: 
-  = resource.document_date
+  = I18n.l(resource.document_date, format: :date_day_month_year)
 p
   strong Deadline deadline date: 
-  = resource.deadline_date
+  = I18n.l(resource.deadline_date, format: :date_day_month_year)
+
 - if resource.file.present?
   p
     strong Download file attachment: 

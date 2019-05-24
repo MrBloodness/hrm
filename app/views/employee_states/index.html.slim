@@ -1,0 +1,21 @@
+h1 Listing employee states
+
+table.table
+  thead
+    - @employee_states.any?
+      tr
+        th Employee state
+        th Created at
+        th colspan='2'
+
+  tbody
+    - @employee_states.each do |employee_state|
+      tr
+        td = employee_state.value
+        td = employee_state.created_at
+        td = link_to 'Edit', edit_employee_state_path(employee_state)
+        td = link_to 'Destroy', employee_state, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Employee state', new_employee_state_path

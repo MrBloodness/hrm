@@ -18,11 +18,21 @@ class EmployeesController < ApplicationController
     respond_to do |format|
       if @employee.save
         format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
-        format.json { render :show, status: :created, location: @employee }
       else
         @employee.valid?
         format.html { render 'employees/new.html.slim' }
-        format.json { render json: @employee.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update
+    @employee = Employee.find(params[:id])
+
+    respond_to do |format|
+      if @employee.update(employee_params)
+        format.html { redirect_to @employee, notice: 'Employee was successfully updated.' }
+      else
+        format.html { render :edit }
       end
     end
   end
@@ -36,7 +46,6 @@ class EmployeesController < ApplicationController
     @employee.destroy
     respond_to do |format|
       format.html { redirect_to employees_url, notice: 'Employee was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
@@ -44,6 +53,6 @@ class EmployeesController < ApplicationController
   private
 
     def employee_params
-      params.require(:employee).permit(:first_name, :last_name, :email)
+      params.require(:employee).permit(:first_name, :last_name, :email, :employed_since, :employee_state)
     end
 end

@@ -1,5 +1,5 @@
 = content_for :title do
-  = 'Editing'
+  = 'Editing employee'
 
 .text-center
 	h1 Editing employee
@@ -27,6 +27,19 @@
             = f.email_field(:email, placeholder: 'Hello@youremail.com', class: 'form-control')
 
           .form-group
+            = f.label(:employed_since)
+            = f.text_field(:employed_since, placeholder: 'Employed since', class: 'form-control datepicker', autocomplete: 'off',
+              data: { 'date-format' => 'dd/mm/yyyy' }, value: ( @employee.employed_since.strftime("%d/%m/%Y") if @employee.employed_since.present? ))
+
+          .form-group
+            = f.label(:employee_state_id)
+            = f.select(:employee_state_id, EmployeeState.all.map { |e| [e.to_s, e.id] } , {} , { class: 'form-control' } )
+
+          .form-group
+            = f.label(:salary)
+            = f.text_field(:salary, class: 'form-control')
+
+          .form-group
             = f.label(:bank_name)
             = f.text_field(:bank_name, class: 'form-control')
 
@@ -34,9 +47,32 @@
             = f.label(:bank_account)
             = f.text_field(:bank_account, class: 'form-control')
 
+          .form-group
+            = f.label(:legal_address)
+            = f.text_field(:legal_address, class: 'form-control')
+
+          .form-group
+            = f.label(:actual_address)
+            = f.text_field(:actual_address, class: 'form-control')
+
+          .form-group
+            = f.label(:mobile_phone)
+            = f.text_field(:mobile_phone, class: 'form-control')
+
+          .form-group
+            = f.label(:internal_phone)
+            = f.text_field(:internal_phone, class: 'form-control')
+
+          .form-group
+            = f.label(:external_phone)
+            = f.text_field(:external_phone, class: 'form-control')
+
+          .form-group
+            = f.label(:private_phone)
+            = f.text_field(:private_phone, class: 'form-control')
+
           = f.submit('Edit', class: 'btn btn-primary btn-block')
 
 => link_to 'Show', @employee
 '|
 =< link_to 'Back', employees_path
-

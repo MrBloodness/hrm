@@ -1,1 +1,132 @@
-show.html.slim
+ul#myTab.nav.nav-tabs role="tablist" 
+  li.nav-item
+    a#main-tab.nav-link.active aria-controls="main" aria-selected="true" data-toggle="tab" href="#main" role="tab"  Main information
+  li.nav-item
+    a#worklogs-tab.nav-link aria-controls="worklogs" aria-selected="false" data-toggle="tab" href="#worklogs" role="tab"  Worklogs
+  li.nav-item
+    a#documents-tab.nav-link aria-controls="documents" aria-selected="false" data-toggle="tab" href="#documents" role="tab"  Documents
+#myTabContent.tab-content
+  #main.tab-pane.fade.show aria-labelledby="main-tab" role="tabpanel" 
+    br
+    p
+      strong First name: 
+      = @employee.first_name
+    p
+      strong Last name: 
+      = @employee.last_name
+    p
+      strong Email: 
+      = @employee.first_name
+    p
+      strong Employed since: 
+      = I18n.l(@employee.employed_since, format: :date_day_month_year)
+    p
+      strong State: 
+      = EmployeeState.find(@employee.employee_state_id)
+    p
+      strong Salary: 
+      = @employee.salary
+
+  #worklogs.tab-pane.fade aria-labelledby="worklogs-tab" role="tabpanel"
+    table.table
+      thead.thead-dark
+        - @employee.work_logs.any?
+          tr
+            th Employee
+            th Worklog date
+            th Worklog type
+            th Spent time
+            th colspan='3'
+
+      tbody
+        - @employee.work_logs.each do |work_log|
+          tr
+            td = Employee.find(work_log.employee_id)
+            td = I18n.l(work_log.log_date, format: :date_day_month_year)
+            td = work_log.work_log_type
+            td = work_log.spent_time
+            td = link_to 'Show', work_log
+            td = link_to 'Edit', edit_work_log_path(work_log)
+            td = link_to 'Destroy', work_log, data: { confirm: 'Are you sure?' }, method: :delete
+  #documents.tab-pane.fade aria-labelledby="documents-tab" role="tabpanel"
+    table.table
+      thead
+        - @employee.documents.any?
+          tr
+            th Number
+            th Title
+            th Employee
+            th Category
+            th State 
+            th Date
+            th Deadline date
+            th colspan='3'
+
+      tbody
+        - @employee.documents.each do |document|
+          tr
+            td = document.number
+            td = document.title
+            td = Employee.find(document.employee_id)
+            td = DocumentCategory.find(document.document_category_id)
+            td = DocumentState.find(document.document_state_id)
+            td = I18n.l(document.document_date, format: :date_day_month_year)
+            td = I18n.l(document.deadline_date, format: :date_day_month_year)
+            td = link_to 'Show', document
+            td = link_to 'Edit', edit_document_path(document)
+            td = link_to 'Destroy', document, data: { confirm: 'Are you sure?' }, method: :delete
+
+
+/ p
+/   strong Employee: 
+/   = Employee.find(@work_log.employee_id)
+/ p
+/   strong Worklog date: 
+/   = @work_log.log_date
+/ p
+/   strong Worklog type: 
+/   = @work_log.work_log_type
+/ p
+/   strong Spent time: 
+/   = @work_log.spent_time
+/ p 
+/   strong Comment: 
+/   = @work_log.comment
+
+=> link_to 'Edit', edit_employee_path(@employee)
+'|
+=< link_to 'Back', employees_path
+
+/
+
+  .form-group
+    = f.label(:bank_name)
+    = f.text_field(:bank_name, class: 'form-control')
+
+  .form-group
+    = f.label(:bank_account)
+    = f.text_field(:bank_account, class: 'form-control')
+
+  .form-group
+    = f.label(:legal_address)
+    = f.text_field(:legal_address, class: 'form-control')
+
+  .form-group
+    = f.label(:actual_address)
+    = f.text_field(:actual_address, class: 'form-control')
+
+  .form-group
+    = f.label(:mobile_phone)
+    = f.text_field(:mobile_phone, class: 'form-control')
+
+  .form-group
+    = f.label(:internal_phone)
+    = f.text_field(:internal_phone, class: 'form-control')
+
+  .form-group
+    = f.label(:external_phone)
+    = f.text_field(:external_phone, class: 'form-control')
+
+  .form-group
+    = f.label(:private_phone)
+    = f.text_field(:private_phone, class: 'form-control')

@@ -5,14 +5,14 @@
   .col-lg-offset-3.col-lg-6.col-md-offset-3.col-md-6.col-sm-offset-2.col-sm-8.col-xs-12
     .panel.panel-default
       .panel-body
-        = form_for(@work_log_type) do |f|
+        = form_for(@employee_state) do |f|
 
-          - unless @work_log_type.errors.empty?
+          - unless @employee_state.errors.empty?
             .alert.alert-warning
               = render 'devise/shared/error_messages', object: f.object
 
           .form-group
-            = f.hidden_field(:type, value: 'WorkLogType')
+            = f.hidden_field(:type, value: 'EmployeeState')
             = f.label(:value)
             = f.text_field(:value, class: 'form-control')
 

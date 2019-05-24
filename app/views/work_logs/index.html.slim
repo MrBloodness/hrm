@@ -1,30 +1,4 @@
-/ h1 Listing worklogs
-
-/ br
-
-/ = link_to 'New Worklog', new_work_log_path
-
-/ - start_date = params.fetch(:start_date, Date.today).to_date
-/ - date_range = (start_date.beginning_of_month.beginning_of_week..start_date.end_of_month.end_of_week)
-
-
-/ table
-/   thead
-/     tr
-/       - date_range.slice(0, 7).each do |day|
-/         th 
-/           = day
-
-/   tbody
-/     - date_range.each_slice(7) do |week|
-/       tr
-/         - week.each do |day|
-/           td
-/             = day
-/     tr
-/       td
-
-h1 = 'Employee Work logs'
+h1 = 'Employee Worklogs'
 
 a href=new_work_log_path
   button.btn.btn-succes.btn-lg.pull-right = '+'
@@ -34,7 +8,7 @@ br
 
 = month_calendar events: @work_logs do |date, work_logs|
   .date-header
-    = date
+    = I18n.l(date, format: :date_day_month_year)
   br  
   .date-body  
     - work_logs.each do |work_log|
@@ -43,7 +17,7 @@ br
           = link_to work_log.employee, target: '_blank' do
             = work_log.employee
         br
-        = "#{work_log.spent_time.to_f}h (#{work_log.work_log_type})"
+        = "#{number_with_precision(work_log.spent_time, precision: 0)}h (#{work_log.work_log_type})"
         - if work_log.comment
           i
             = " /#{work_log.comment}"
@@ -69,9 +43,9 @@ table.table
     - @work_logs.each do |work_log|
       tr
         td = Employee.find(work_log.employee_id)
-        td = work_log.log_date
+        td = I18n.l(work_log.log_date, format: :date_day_month_year)
         td = work_log.work_log_type
-        td = work_log.spent_time
+        td = number_with_precision(work_log.spent_time, precision: 0)
         td = link_to 'Show', work_log
         td = link_to 'Edit', edit_work_log_path(work_log)
         td = link_to 'Destroy', work_log, data: { confirm: 'Are you sure?' }, method: :delete

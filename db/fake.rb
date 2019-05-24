@@ -1,4 +1,7 @@
 work_log_types = ['Working', 'On vacation', 'Sick', 'Absent']
+employee_states = ['Active', 'Former', 'Potential']
+document_categories = ['Agreement', 'Offer', 'Invoice']
+document_states = ['Open', 'Closed']
 
 2.times do
   User.create! do |u|
@@ -12,21 +15,78 @@ work_log_types = ['Working', 'On vacation', 'Sick', 'Absent']
   end
 end
 
+employee_states.each do |esa|
+  EmployeeState.create! do |es|
+    es.value = esa
+  end
+end
+
+# 3.times do
+#   EmployeeState.create! do |es|
+#     es.value = employee_states.sample
+#   end
+# end
+
 4.times do
   Employee.create! do |e|
     e.first_name = Faker::Name.first_name
     e.last_name = Faker::Name.last_name
+    e.employee_state = EmployeeState.all.sample
     email_name = "#{e.first_name}_#{e.last_name}".parameterize('_')
     email_host = ['inbox.lv', 'gmail.com'].sample
     e.email = "#{email_name}@#{email_host}"
   end
 end
 
-5.times do
-  WorkLogType.create! do |wt|
-    wt.value = work_log_types.sample
+document_categories.each do |dca|
+  DocumentCategory.create! do |dc|
+    dc.value = dca
   end
 end
+
+# 3.times do
+#   DocumentCategory.create! do |dc|
+#     dc.value = document_categories.sample
+#   end
+# end
+
+document_states.each do |dsa|
+  DocumentState.create! do |ds|
+    ds.value = dsa
+  end
+end
+
+# 2.times do
+#   DocumentState.create! do |ds|
+#     ds.value = document_states.sample
+#   end
+# end
+
+4.times do
+  Document.create! do |d|
+    d.number = Faker::Number.decimal_part(3)
+    d.title = Faker::DcComics.title
+    d.description = Faker::Lorem.paragraph
+    d.user_id = User.all.sample.id
+    d.employee_id = Employee.all.sample.id
+    d.document_category = DocumentCategory.all.sample
+    d.document_state = DocumentState.all.sample
+    d.document_date = Date.today
+    d.deadline_date = Faker::Date.between(Date.tomorrow, 10.days.from_now)
+  end
+end
+
+work_log_types.each do |wlt|
+  WorkLogType.create! do |wt|
+    wt.value = wlt
+  end
+end
+
+# 4.times do
+#   WorkLogType.create! do |wt|
+#     wt.value = work_log_types.sample
+#   end
+# end
 
 2.times do
   WorkLog.create! do |w|

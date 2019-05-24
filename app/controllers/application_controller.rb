@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :initialize_resource, only: [:new, :create]
   before_action :set_resource, only: [:show, :edit]
   before_action :set_resources, only: [:index]
+  before_action :correct_user, except: [:home, :new, :create]
   helper_method :resource_klass, :resource, :resources
 
   # def home
@@ -61,5 +62,12 @@ class ApplicationController < ActionController::Base
 
   def set_resources
     self.resources = resource_klass.all
+  end
+
+  def correct_user
+    unless current_user
+      flash[:danger] = 'Please log in.'
+      redirect_to(root_url)
+    end
   end
 end

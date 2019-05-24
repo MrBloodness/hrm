@@ -1,6 +1,7 @@
 class Document < ApplicationRecord
   belongs_to :document_category
   belongs_to :document_state
+  belongs_to :employee
   has_attached_file :file
   do_not_validate_attachment_file_type :file
 

@@ -8,7 +8,7 @@ class WorkLog < ApplicationRecord
   end
 
   def end_time
-    start_time + spent_time.hours
+    start_time + spent_time.hours rescue Time.now
   end
 
   private
