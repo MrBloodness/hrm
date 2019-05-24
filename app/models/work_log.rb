@@ -3,6 +3,14 @@ class WorkLog < ApplicationRecord
   belongs_to :employee
   belongs_to :work_log_type
 
+  def start_time
+    log_date.to_datetime
+  end
+
+  def end_time
+    start_time + spent_time.hours
+  end
+
   private
 
 end

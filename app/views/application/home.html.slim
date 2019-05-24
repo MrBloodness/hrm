@@ -3,4 +3,5 @@
     | Welcome to HRM
   h2
     |  This is the home page for the Human resources management system.
-  = link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary"
+  - unless current_user      
+    = link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary"

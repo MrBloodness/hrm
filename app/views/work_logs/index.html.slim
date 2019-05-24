@@ -1,26 +1,5 @@
 / h1 Listing worklogs
 
-/ table
-/   thead
-/     - @work_logs.any?
-/       tr
-/         th Employee
-/         th Worklog date
-/         th Worklog type
-/         th Spent time
-/         th colspan='3'
-
-/   tbody
-/     - @work_logs.each do |work_log|
-/       tr
-/         td = Employee.find(work_log.employee_id)
-/         td = work_log.log_date
-/         td = work_log.work_log_type
-/         td = work_log.spent_time
-/         td = link_to 'Show', work_log
-/         td = link_to 'Edit', edit_work_log_path(work_log)
-/         td = link_to 'Destroy', work_log, data: { confirm: 'Are you sure?' }, method: :delete
-
 / br
 
 / = link_to 'New Worklog', new_work_log_path
@@ -45,6 +24,54 @@
 /     tr
 /       td
 
+h1 = 'Employee Work logs'
 
-= month_calendar do |date|
-  = date
+a href=new_work_log_path
+  button.btn.btn-succes.btn-lg.pull-right = '+'
+br
+br
+
+
+= month_calendar events: @work_logs do |date, work_logs|
+  .date-header
+    = date
+  br  
+  .date-body  
+    - work_logs.each do |work_log|
+      .work_log-calendar-item
+        b
+          = link_to work_log.employee, target: '_blank' do
+            = work_log.employee
+        br
+        = "#{work_log.spent_time.to_f}h (#{work_log.work_log_type})"
+        - if work_log.comment
+          i
+            = " /#{work_log.comment}"
+
+.divider
+
+h2 = 'Work log list'
+
+a href=new_work_log_path
+  button.btn.btn-succes.btn-lg.pull-right = '+'
+
+table.table
+  thead.thead-dark
+    - @work_logs.any?
+      tr
+        th Employee
+        th Worklog date
+        th Worklog type
+        th Spent time
+        th colspan='3'
+
+  tbody
+    - @work_logs.each do |work_log|
+      tr
+        td = Employee.find(work_log.employee_id)
+        td = work_log.log_date
+        td = work_log.work_log_type
+        td = work_log.spent_time
+        td = link_to 'Show', work_log
+        td = link_to 'Edit', edit_work_log_path(work_log)
+        td = link_to 'Destroy', work_log, data: { confirm: 'Are you sure?' }, method: :delete
