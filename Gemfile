@@ -11,7 +11,7 @@ gem 'jbuilder', '2.6.0'         # Build JSON APIs with ease. Read more: https://
 gem 'jquery-rails', '4.1.1'     # Use jquery as the JavaScript library
 gem 'mysql2', '~> 0.3.18'
 gem 'paperclip'                 # For attachments
-gem 'puma', '3.6.0'             # Use Puma as the app server
+gem 'puma' #, '3.6.0'             # Use Puma as the app server
 gem 'rails', '5.0.0'            # Bundle edge Rails instead: gem 'rails', github: 'rails/r0ails'
 gem 'sass-rails', '5.0.6'       # Use SCSS for stylesheets
 gem "simple_calendar", "~> 2.0"
@@ -29,6 +29,8 @@ group :development do
   gem 'spring'                  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'annotate'
+  gem 'guard', '~> 2.14', '>= 2.14.1'
+  gem 'guard-livereload', '~> 2.5', '>= 2.5.2', require: false  
 end
 
 # always use: "bundle install --without production" command to install gems during development
