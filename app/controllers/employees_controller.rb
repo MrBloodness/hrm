@@ -14,7 +14,8 @@ class EmployeesController < ApplicationController
 
   def create
     @employee = Employee.new(employee_params)
-
+    @employee.employee_state = EmployeeState.find_by(value: 'Active')
+    
     respond_to do |format|
       if @employee.save
         format.html { redirect_to @employee, notice: 'Employee was successfully created.' }
@@ -53,6 +54,6 @@ class EmployeesController < ApplicationController
   private
 
     def employee_params
-      params.require(:employee).permit(:first_name, :last_name, :email, :employed_since, :employee_state)
+      params.require(:employee).permit(:first_name, :last_name, :email, :employed_since)
     end
 end

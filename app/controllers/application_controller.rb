@@ -8,18 +8,6 @@ class ApplicationController < ActionController::Base
   before_action :correct_user, except: [:home, :new, :create]
   helper_method :resource_klass, :resource, :resources
 
-  # def home
-  # end
-
-  # def about
-  # end
-
-  # def contact
-  # end
-
-  # def secret
-  # end
-
   protected
 
   def configure_permitted_parameters

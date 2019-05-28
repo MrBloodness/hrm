@@ -18,11 +18,11 @@ table.table
       tr
         td = document.number
         td = document.title
-        td = Employee.find(document.employee_id)
-        td = DocumentCategory.find(document.document_category_id)
-        td = DocumentState.find(document.document_state_id)
-        td = I18n.l(document.document_date, format: :date_day_month_year)
-        td = I18n.l(document.deadline_date, format: :date_day_month_year)
+        td = document.employee
+        td = document.document_category
+        td = document.document_state
+        td = I18n.l(document.document_date, format: :date_day_month_year) if document.document_date?
+        td = I18n.l(document.deadline_date, format: :date_day_month_year) if document.deadline_date?
         td = link_to 'Show', document
         td = link_to 'Edit', edit_document_path(document)
         td = link_to 'Destroy', document, data: { confirm: 'Are you sure?' }, method: :delete

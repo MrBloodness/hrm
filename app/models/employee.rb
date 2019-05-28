@@ -1,7 +1,7 @@
 class Employee < ApplicationRecord
   has_many :work_logs
   has_many :documents
-  belongs_to :employee_state
+  belongs_to :employee_state, required: false
   
   validates :first_name, :last_name, :email, presence: true
 
