@@ -1,8 +1,9 @@
+- provide(:title_text, 'Create document category')
 - provide(:button_text, 'Create')
-- provide(:title_text, 'Create document category');
+
 .text-center
   h1 New document category
 
 == render 'form'
 
-= link_to 'Back', document_categories_path
+= link_to 'Back', :back

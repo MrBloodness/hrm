@@ -14,7 +14,7 @@ br
     - work_logs.each do |work_log|
       .work_log-calendar-item
         b
-          = link_to work_log.employee, target: '_blank' do
+          = link_to work_log.employee do # If you need to open employee page in new tab -> targer: '_blank'
             = work_log.employee
         br
         = "#{number_with_precision(work_log.spent_time, precision: 0)}h (#{work_log.work_log_type})"
@@ -42,7 +42,7 @@ table.table
   tbody
     - @work_logs.each do |work_log|
       tr
-        td = Employee.find(work_log.employee_id)
+        td = work_log.employee
         td = I18n.l(work_log.log_date, format: :date_day_month_year)
         td = work_log.work_log_type
         td = number_with_precision(work_log.spent_time, precision: 0)

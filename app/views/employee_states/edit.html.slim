@@ -1,10 +1,10 @@
-- provide(:button_text, 'Edit')
 - provide(:title_text, 'Edit employee state')
+- provide(:button_text, 'Edit')
 
 .text-center
   h1 Editing employee state
 
 == render 'form'
 
-= link_to 'Back', employee_states_path
+= link_to 'Back', :back
 

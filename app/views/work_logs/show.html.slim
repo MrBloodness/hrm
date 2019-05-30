@@ -9,11 +9,11 @@ p
   = @work_log.work_log_type
 p
   strong Spent time: 
-  = @work_log.spent_time
+  = number_with_precision(work_log.spent_time, precision: 0)
 p 
   strong Comment: 
   = @work_log.comment
 
 => link_to 'Edit', edit_work_log_path(@work_log)
 '|
-=< link_to 'Back', work_logs_path
+=< link_to 'Back', :back

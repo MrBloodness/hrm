@@ -1,9 +1,10 @@
-- provide(:button_text, 'Update')
 - provide(:title_text, 'User update')
+- provide(:button_text, 'Update')
+
 .text-center
 	h1 Editing user
 
 == render 'form'
 
-=< link_to 'Back', users_path
+=< link_to 'Back', :back
 

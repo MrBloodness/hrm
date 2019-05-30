@@ -1,12 +1,12 @@
 ul#myTab.nav.nav-tabs role="tablist" 
-  li.nav-item
-    a#main-tab.nav-link.active aria-controls="main" aria-selected="true" data-toggle="tab" href="#main" role="tab"  Main information
+  li.nav-item.active
+    a#main-tab.nav-link aria-controls="main" aria-selected="true" data-toggle="tab" href="#main" role="tab"  Main information
   li.nav-item
     a#worklogs-tab.nav-link aria-controls="worklogs" aria-selected="false" data-toggle="tab" href="#worklogs" role="tab"  Worklogs
   li.nav-item
     a#documents-tab.nav-link aria-controls="documents" aria-selected="false" data-toggle="tab" href="#documents" role="tab"  Documents
 #myTabContent.tab-content
-  #main.tab-pane.fade.show aria-labelledby="main-tab" role="tabpanel" 
+  #main.tab-pane.fade.active.in aria-labelledby="main-tab" role="tabpanel" 
     br
     p
       strong First name: 
@@ -41,10 +41,10 @@ ul#myTab.nav.nav-tabs role="tablist"
       tbody
         - @employee.work_logs.each do |work_log|
           tr
-            td = Employee.find(work_log.employee_id)
+            td = work_log.employee
             td = I18n.l(work_log.log_date, format: :date_day_month_year)
             td = work_log.work_log_type
-            td = work_log.spent_time
+            td = number_with_precision(work_log.spent_time, precision: 0)
             td = link_to 'Show', work_log
             td = link_to 'Edit', edit_work_log_path(work_log)
             td = link_to 'Destroy', work_log, data: { confirm: 'Are you sure?' }, method: :delete
@@ -79,7 +79,7 @@ ul#myTab.nav.nav-tabs role="tablist"
 
 => link_to 'Edit', edit_employee_path(@employee)
 '|
-=< link_to 'Back', employees_path
+=< link_to 'Back', :back
 
 /
 
