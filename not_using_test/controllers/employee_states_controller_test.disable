@@ -38,11 +38,11 @@ class EmployeeStatesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to employee_state_url(@employee_state)
   end
 
-  test "should destroy employee_state" do
-    assert_difference('EmployeeState.count', -1) do
-      delete employee_state_url(@employee_state)
-    end
+  # test "should destroy employee_state" do
+  #   assert_difference('EmployeeState.count', -1) do
+  #     delete employee_state_url(@employee_state)
+  #   end
 
-    assert_redirected_to employee_states_url
-  end
+  #   assert_redirected_to employee_states_url
+  # end
 end

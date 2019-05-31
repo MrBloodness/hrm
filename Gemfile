@@ -19,8 +19,17 @@ gem 'slim-rails', '3.1.0'
 gem 'turbolinks', '5.0.0'       # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby] # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'uglifier', '3.0.0'         # Use Uglifier as compressor for JavaScript assets
+
 group :development, :test do
   gem 'byebug', platform: :mri  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'rspec-rails', '~> 3.0'
+  gem "database_cleaner"
+end
+
+group :test do
+  gem 'minitest', '5.10.3'
+  gem "capybara", '~> 1.1.4'
+  gem "selenium-webdriver"
 end
 
 group :development do

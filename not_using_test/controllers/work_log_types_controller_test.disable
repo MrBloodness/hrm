@@ -15,13 +15,13 @@ class WorkLogTypesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create work_log_type" do
-    assert_difference('WorkLogType.count') do
-      post work_log_types_url, params: { work_log_type: {  } }
-    end
+  # test "should create work_log_type" do
+  #   assert_difference('WorkLogType.count') do
+  #     post work_log_types_url, params: { work_log_type: {  } }
+  #   end
 
-    assert_redirected_to work_log_type_url(WorkLogType.last)
-  end
+  #   assert_redirected_to work_log_type_url(WorkLogType.last)
+  # end
 
   test "should show work_log_type" do
     get work_log_type_url(@work_log_type)

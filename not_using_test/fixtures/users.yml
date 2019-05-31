@@ -4,10 +4,21 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+one: 
+  id: 1
+  first_name: 'John'
+  last_name: 'Snow' 
+  email: 'knows@nothing.com'
+
 # column: value
 #
-two: {}
+# two: 
+#   first_name: 'John'
+#   last_name: 'Cena' 
+#   email: 'jcena@wwe.com'
+#   password: 'password'
+#   password_confirmation: 'password'
+
 # column: value
 
 # == Schema Information

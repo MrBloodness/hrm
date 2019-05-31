@@ -6,7 +6,7 @@ class DocumentCategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get document_categories_url
+    get document_categories_path
     assert_response :success
   end
 
@@ -15,13 +15,13 @@ class DocumentCategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create document_category" do
-    assert_difference('DocumentCategory.count') do
-      post document_categories_url, params: { document_category: {  } }
-    end
+  # test "should create document_category" do
+  #   assert_difference('DocumentCategory.count') do
+  #     post document_categories_url, params: { document_category: {  } }
+  #   end
 
-    assert_redirected_to document_category_url(DocumentCategory.last)
-  end
+  #   assert_redirected_to document_category_url(DocumentCategory.last)
+  # end
 
   test "should show document_category" do
     get document_category_url(@document_category)
@@ -29,7 +29,7 @@ class DocumentCategoriesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get edit" do
-    get edit_document_category_url(@document_category)
+    get edit_document_category_path(@document_category)
     assert_response :success
   end
 
