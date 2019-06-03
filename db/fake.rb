@@ -37,7 +37,7 @@ unless Employee.exists?
       e.first_name = Faker::Name.first_name
       e.last_name = Faker::Name.last_name
       e.employee_state = EmployeeState.all.sample
-      e.employed_since = Faker::Date.between(Date.two_years_ago, Date.yesterday)
+      e.employed_since = Faker::Date.between(2.years.ago, Date.yesterday)
       email_name = "#{e.first_name}_#{e.last_name}".parameterize('_')
       email_host = ['inbox.lv', 'gmail.com'].sample
       e.email = "#{email_name}@#{email_host}"

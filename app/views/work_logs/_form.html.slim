@@ -14,7 +14,7 @@
           .form-group
             = f.label(:employee)
             br
-            = f.select(:employee_id, Employee.all.map { |e| [e.to_s, e.id] } , { :prompt => 'Select One' }, { class: 'form-control' } )
+            = f.select(:employee_id, Employee.all.map { |e| [e.to_s, e.id] } , {}, { class: 'form-control' } )
 
           .form-group
             = f.label('Worklog type')
@@ -31,6 +31,6 @@
 
           .form-group
             = f.label(:log_date)
-            = f.text_field(:log_date, placeholder: 'Log date', class: 'form-control datepicker')
+            = f.text_field(:log_date, placeholder: ' Log date', class: 'form-control datepicker')
 
           = f.submit yield(:button_text), class: 'btn btn-primary btn-block'

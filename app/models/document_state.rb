@@ -1,5 +1,8 @@
 class DocumentState < UserClassifier
+
   has_many :document
+
+  validates :value, presence: true
 
   def to_s
     "#{value}"

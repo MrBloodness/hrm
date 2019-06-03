@@ -23,9 +23,50 @@ ul#myTab.nav.nav-tabs role="tablist"
     p
       strong State: 
       = EmployeeState.find(@employee.employee_state_id)
-    p
-      strong Salary: 
-      = @employee.salary
+    - if @employee.salary.present?
+      p
+        strong Salary: 
+        = number_with_precision(@employee.salary, precision: 0) + ' Euro'
+
+    - if @employee.bank_name.present?
+      p
+        strong Bank name: 
+        = @employee.bank_name
+
+    - if @employee.bank_account.present?
+      p
+        strong Bank account: 
+        = @employee.bank_account
+
+    - if @employee.legal_address.present?
+      p
+        strong Legal address: 
+        = @employee.legal_address
+
+    - if @employee.actual_address.present?
+      p
+        strong Actual address: 
+        = @employee.actual_address
+
+    - if @employee.mobile_phone.present?
+      p
+        strong Mobile phone: 
+        = @employee.mobile_phone
+
+    - if @employee.internal_phone.present?
+      p
+        strong Internal phone: 
+        = @employee.internal_phone
+
+    - if @employee.external_phone.present?
+      p
+        strong External phone: 
+        = @employee.external_phone
+
+    - if @employee.private_phone.present?
+      p
+        strong Private phone: 
+        = @employee.private_phone
 
   #worklogs.tab-pane.fade aria-labelledby="worklogs-tab" role="tabpanel"
     table.table
@@ -80,37 +121,3 @@ ul#myTab.nav.nav-tabs role="tablist"
 => link_to 'Edit', edit_employee_path(@employee)
 '|
 =< link_to 'Back', :back
-
-/
-
-  .form-group
-    = f.label(:bank_name)
-    = f.text_field(:bank_name, class: 'form-control')
-
-  .form-group
-    = f.label(:bank_account)
-    = f.text_field(:bank_account, class: 'form-control')
-
-  .form-group
-    = f.label(:legal_address)
-    = f.text_field(:legal_address, class: 'form-control')
-
-  .form-group
-    = f.label(:actual_address)
-    = f.text_field(:actual_address, class: 'form-control')
-
-  .form-group
-    = f.label(:mobile_phone)
-    = f.text_field(:mobile_phone, class: 'form-control')
-
-  .form-group
-    = f.label(:internal_phone)
-    = f.text_field(:internal_phone, class: 'form-control')
-
-  .form-group
-    = f.label(:external_phone)
-    = f.text_field(:external_phone, class: 'form-control')
-
-  .form-group
-    = f.label(:private_phone)
-    = f.text_field(:private_phone, class: 'form-control')

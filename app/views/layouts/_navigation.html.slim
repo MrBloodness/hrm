@@ -20,7 +20,6 @@ ul class="nav navbar-nav"
 
 ul class="nav navbar-nav navbar-right"
   - if current_user
-    li= link_to('<span class="fa fa-cog"></span> Settings'.html_safe, edit_user_registration_path)
     li= link_to('<span class="fa fa-sign-out"></span> Log out'.html_safe, destroy_user_session_path, method: 'delete')
   - else
     li= link_to('<span class="fa fa-sign-in"></span> Login'.html_safe, new_user_session_path)

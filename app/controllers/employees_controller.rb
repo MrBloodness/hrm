@@ -30,7 +30,7 @@ class EmployeesController < ApplicationController
     @employee = Employee.find(params[:id])
 
     respond_to do |format|
-      if @employee.update(employee_params)
+      if @employee.update(employee_edit_params)
         format.html { redirect_to @employee, notice: 'Employee was successfully updated.' }
       else
         format.html { render :edit }
@@ -55,5 +55,11 @@ class EmployeesController < ApplicationController
 
     def employee_params
       params.require(:employee).permit(:first_name, :last_name, :email, :employed_since)
+    end
+
+    def employee_edit_params
+      params.require(:employee).permit(:first_name, :last_name, :email, :employed_since,
+        :salary, :bank_name, :bank_account, :legal_address, :actual_address, :mobile_phone,
+        :internal_phone, :external_phone, :private_phone)
     end
 end

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :authenticate_user!, except: [:create]
+  before_action :authenticate_user!, except: [:create, :contact, :about]
 
   def new
     @user = User.new
@@ -14,7 +14,9 @@ class UsersController < ApplicationController
           if current_user
             redirect_to users_url, notice: 'User was successfully created.'
           else
-            redirect_to new_user_session_path
+            sign_in(@user)
+            redirect_to home_path
+            # redirect_to new_user_session_path
           end
         end
       else
@@ -24,18 +26,18 @@ class UsersController < ApplicationController
     end
   end
 
-  def update
-    @user = User.find(params[:id])
-    @user.skip_password_validation = true
-    @user.save
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to users_url, notice: 'User was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
-    end
-  end
+  # def update
+  #   @user = User.find(params[:id])
+  #   @user.skip_password_validation = true
+  #   @user.save
+  #   respond_to do |format|
+  #     if @user.update(user_params)
+  #       format.html { redirect_to users_url, notice: 'User was successfully updated.' }
+  #     else
+  #       format.html { render :edit }
+  #     end
+  #   end
+  # end
 
   def destroy
     @user = User.find(params[:id])

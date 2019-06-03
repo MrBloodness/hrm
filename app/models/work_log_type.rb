@@ -2,6 +2,8 @@ class WorkLogType < UserClassifier
 
   has_many :work_log
 
+  validates :value, presence: true
+
   def to_s
     "#{value}"
   end

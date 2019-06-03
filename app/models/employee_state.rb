@@ -1,5 +1,8 @@
 class EmployeeState < UserClassifier
+
   has_many :employee
+
+  validates :value, presence: true
 
   def to_s
     "#{value}"

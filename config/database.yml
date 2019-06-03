@@ -8,7 +8,7 @@ default: &default
 development:
   <<: *default
   database: hrm_dev
-  # database: user_avatar_test
+
 test:
   <<: *default
   database: hrm_test

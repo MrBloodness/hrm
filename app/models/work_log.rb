@@ -3,6 +3,8 @@ class WorkLog < ApplicationRecord
   belongs_to :employee
   belongs_to :work_log_type
 
+  validates :spent_time, :log_date, presence: true
+
   def start_time
     log_date.to_datetime
   end

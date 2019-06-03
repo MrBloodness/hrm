@@ -1,11 +1,11 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  # before_action :authenticate_user!, only: [:update, :destroy]
+  before_action :authenticate_user!, only: [:update, :destroy]
+  # before_action :correct_user, only: [:update, :destroy] // wanted to make for user edit and delete
   before_action :initialize_resource, only: [:new, :create]
   before_action :set_resource, only: [:show, :edit]
   before_action :set_resources, only: [:index]
-  before_action :correct_user, except: [:home, :new, :create]
   helper_method :resource_klass, :resource, :resources
 
   protected
@@ -55,6 +55,6 @@ class ApplicationController < ActionController::Base
   def correct_user
     return unless current_user
 
-    redirect_to(root_url, danger: 'Please log in.')
+    redirect_to(:back, notice: 'You can edit only your own information.')
   end
 end
