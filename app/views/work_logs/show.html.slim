@@ -9,7 +9,7 @@ p
   = @work_log.work_log_type
 p
   strong Spent time: 
-  = number_with_precision(work_log.spent_time, precision: 0)
+  = number_with_precision(@work_log.spent_time, precision: 0)
 p 
   strong Comment: 
   = @work_log.comment

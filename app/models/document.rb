@@ -5,7 +5,7 @@ class Document < ApplicationRecord
   has_attached_file :file
   do_not_validate_attachment_file_type :file
 
-  validates :document_date, :deadline_date, :employee_id, presence: true
+  validates :document_state, :document_date, :deadline_date, :employee_id, presence: true
 
 end
 

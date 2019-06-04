@@ -29,7 +29,7 @@
 
           .form-group
             = f.label(:document_state)
-            = f.select(:document_state_id, DocumentState.all.map { |e| [e.to_s, e.id] } , {} , { class: 'form-control' } )
+            = f.select(:document_state_id, DocumentState.all.map { |e| [e.to_s, e.id] } , { :prompt => 'Select One' } , { class: 'form-control' } )
 
           .form-group
             = f.label(:document_date)

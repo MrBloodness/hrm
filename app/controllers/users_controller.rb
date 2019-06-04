@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, except: [:create, :contact, :about]
-
+  
   def new
     @user = User.new
   end
@@ -39,13 +38,13 @@ class UsersController < ApplicationController
   #   end
   # end
 
-  def destroy
-    @user = User.find(params[:id])
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-    end
-  end
+  # def destroy
+  #   @user = User.find(params[:id])
+  #   @user.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+  #   end
+  # end
 
   private
 

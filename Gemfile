@@ -28,8 +28,10 @@ end
 
 group :test do
   gem 'minitest', '5.10.3'
-  gem "capybara", '~> 1.1.4'
-  gem "selenium-webdriver"
+  gem "capybara", '~> 2.2.0'
+  gem "selenium-webdriver", '2.53.4'
+  gem 'factory_girl_rails'
+  gem 'poltergeist'
 end
 
 group :development do

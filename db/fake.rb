@@ -4,12 +4,12 @@ document_categories = ['Agreement', 'Offer', 'Invoice']
 document_states = ['Open', 'Closed']
 
 unless User.exists?
-  2.times do
+  4.times do
     User.create! do |u|
       u.first_name = Faker::Name.first_name
       u.last_name = Faker::Name.last_name
       email_name = "#{u.first_name}_#{u.last_name}".parameterize('_')
-      email_host = ['inbox.lv', 'gmail.com'].sample
+      email_host = ['inbox.lv', 'gmail.com', 'yandex.ru', 'yahoo.com'].sample
       u.email = "#{email_name}@#{email_host}"
       u.password = 'password'
       u.password_confirmation = 'password'

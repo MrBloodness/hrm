@@ -30,10 +30,7 @@ document.addEventListener("turbolinks:load", function() {
 $(document).ready(function() {
   $('.datepicker').datepicker({format: 'dd/mm/yyyy'});
   var d = new Date();
-  // var currMonth = d.getMonth();
-  // var currYear = d.getFullYear();
   var startDate = new Date(d.getFullYear(), d.getMonth(), d.getDate());
 
   $(".datepicker").datepicker();
-  // $(".datepicker").datepicker("setDate", startDate);
 });
