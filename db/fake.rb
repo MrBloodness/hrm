@@ -25,12 +25,6 @@ unless EmployeeState.exists?
   end
 end
 
-# 3.times do
-#   EmployeeState.create! do |es|
-#     es.value = employee_states.sample
-#   end
-# end
-
 unless Employee.exists?
   4.times do
     Employee.create! do |e|
@@ -53,12 +47,6 @@ unless DocumentCategory.exists?
   end
 end
 
-# 3.times do
-#   DocumentCategory.create! do |dc|
-#     dc.value = document_categories.sample
-#   end
-# end
-
 unless DocumentState.exists?
   document_states.each do |dsa|
     DocumentState.create! do |ds|
@@ -66,12 +54,6 @@ unless DocumentState.exists?
     end
   end
 end
-
-# 2.times do
-#   DocumentState.create! do |ds|
-#     ds.value = document_states.sample
-#   end
-# end
 
 unless Document.exists?
   4.times do
@@ -96,12 +78,6 @@ unless WorkLogType.exists?
     end
   end
 end
-
-# 4.times do
-#   WorkLogType.create! do |wt|
-#     wt.value = work_log_types.sample
-#   end
-# end
 
 unless WorkLog.exists?
   2.times do

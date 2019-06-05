@@ -1,6 +1,13 @@
 = content_for :title do
   = 'Contact'
 
-.text-center
-  h1 Contact
-  p.text-success contact details goes here
+.center.jumbotron
+  .text-center
+    h1 Contact
+  h2 If you have any problems or suggestions feel free to contact us:
+  h3
+    = 'tel: '
+    = link_to Faker::PhoneNumber.cell_phone
+    br
+    = 'email: '
+    = mail_to 'info@hrm.lv'

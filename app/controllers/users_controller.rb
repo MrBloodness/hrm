@@ -15,7 +15,6 @@ class UsersController < ApplicationController
           else
             sign_in(@user)
             redirect_to home_path
-            # redirect_to new_user_session_path
           end
         end
       else
@@ -24,6 +23,8 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  # removed for more security reason
 
   # def update
   #   @user = User.find(params[:id])
@@ -35,14 +36,6 @@ class UsersController < ApplicationController
   #     else
   #       format.html { render :edit }
   #     end
-  #   end
-  # end
-
-  # def destroy
-  #   @user = User.find(params[:id])
-  #   @user.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
   #   end
   # end
 

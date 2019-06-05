@@ -1,10 +1,15 @@
-- provide(:title_text, 'User update')
-- provide(:button_text, 'Update')
+- if current_user == @user
+  - provide(:title_text, 'User update')
+  - provide(:button_text, 'Update')
 
-.text-center
-	h1 Editing user
+  .text-center
+    h1 Editing user
 
-== render 'form'
+  == render 'form'
 
-=< link_to 'Back', :back
-
+  =< link_to 'Back', :back
+- else
+  .alert.alert-danger
+    = 'You can edit only your own information!'
+  br
+  =< link_to 'Back', :back
