@@ -26,18 +26,18 @@ class UsersController < ApplicationController
 
   # removed for more security reason
 
-  # def update
-  #   @user = User.find(params[:id])
-  #   @user.skip_password_validation = true
-  #   @user.save
-  #   respond_to do |format|
-  #     if @user.update(user_params)
-  #       format.html { redirect_to users_url, notice: 'User was successfully updated.' }
-  #     else
-  #       format.html { render :edit }
-  #     end
-  #   end
-  # end
+  def update
+    @user = User.find(params[:id])
+    @user.skip_password_validation = true
+    @user.save
+    respond_to do |format|
+      if @user.update(user_params)
+        format.html { redirect_to users_url, notice: 'User was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
+  end
 
   private
 

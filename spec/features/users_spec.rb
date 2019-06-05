@@ -20,7 +20,9 @@ RSpec.describe UsersController do
       fill_in 'user_email', :with => 'test@example.com'
       fill_in 'user_first_name', :with => 'name'
       fill_in 'user_last_name', :with => 'surname'
-      click_on 'Register'
+      fill_in 'user_password', :with => 'password'
+      fill_in 'user_password_confirmation', :with => 'password'
+      click_on('Register')
       expect(page).to have_content create_notice(:user)
     end
   end
@@ -32,18 +34,9 @@ RSpec.describe UsersController do
       visit edit_user_path(user)
       expect(page).to have_field('user_email', with: user.email)
       fill_in 'user_email', :with => new_email
-      click_on 'Register'
+      click_on('Update')
       expect(page).to have_content update_notice(:user)
       expect(page).to have_content(new_email)
-    end
-  end
-
-  describe '#destroy' do
-    it 'destroys user' do
-      login_as user
-      visit users_path
-      destroy_link.click
-      expect(page).to have_content destroy_notice(:user)
     end
   end
 end

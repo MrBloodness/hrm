@@ -3,7 +3,6 @@ FactoryGirl.define do
     number = Faker::Number.decimal_part(3)
     title = Faker::DcComics.title
     description = Faker::Lorem.paragraph
-    user { create :user }
     employee { create :employee }
     document_category { create :document_category }
     document_state { create :document_state }
