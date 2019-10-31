@@ -4,7 +4,7 @@ ruby '2.3.1'
 gem 'bootstrap-datepicker-rails'
 gem 'bootstrap-sass', '3.3.7'
 gem 'coffee-rails', '4.2.1'     # Use CoffeeScript for .coffee assets and views
-gem 'devise', '4.2.0'
+gem 'devise', '4.7.1'
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'font-awesome-rails'
 gem 'jbuilder', '2.6.0'         # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
